@@ -2,7 +2,9 @@ async function generateLogo() {
   const theme = document.getElementById("themeInput").value;
   const brand = document.getElementById("brandInput").value;
 
-  // Example of authorization token
+  console.log(brand);
+  console.log(theme);
+
   const token = "10574af0b2fe4401bbeab87cee142707";
 
   try {
@@ -12,15 +14,21 @@ async function generateLogo() {
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
-      body: JSON.stringify({ prompt: theme, brand: brand }),
+      body: JSON.stringify({ theme: theme, brand: brand }),
     });
 
     const logoData = await response.json();
 
     const logoContainer = document.getElementById("logo-container");
     logoContainer.innerHTML = `
-    <img src="${logoData.imageUrl}" alt="Generated Image">
-    <button type="button" class="btn btn-primary" id="favoritesBtn">Primary</button>
+    <img src="${logoData}" alt="Generated Image">
+    <button type="button" class="btn btn-primary" id="favoritesBtn">Add to favorites</button>
+    <img src="${logoData}" alt="Generated Image">
+    <button type="button" class="btn btn-primary" id="favoritesBtn">Add to favorites</button>
+    <img src="${logoData}" alt="Generated Image">
+    <button type="button" class="btn btn-primary" id="favoritesBtn">Add to favorites</button>
+    <img src="${logoData}" alt="Generated Image">
+    <button type="button" class="btn btn-primary" id="favoritesBtn">Add to favorites</button>
     `;
   } catch (error) {
     console.error("Error generating image:", error);
@@ -46,7 +54,25 @@ async function getLogoHistory() {
 
 async function getLogoinfo(logoId) {
   try {
-    const response = await fetch(`http://172.16.50.58:5000/api/v1/${logoId}`);
+    const response = await fetch(`http://172.16.50.58:5000/api/v1/${logoId}`, {
+      method: "GET",
+    });
+    const downloadLinks = await response.json();
+    return downloadLinks;
+  } catch (error) {
+    console.error("Error getting logo download links:", error);
+    throw error;
+  }
+}
+
+async function deleteLogo(logoId) {
+  try {
+    const response = await fetch(
+      `http://172.16.50.58:5000/api/v1/${logoId}/delete`,
+      {
+        method: "DELETE",
+      }
+    );
     const downloadLinks = await response.json();
     return downloadLinks;
   } catch (error) {
