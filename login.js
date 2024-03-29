@@ -16,10 +16,12 @@ loginForm.addEventListener("submit", async (event) => {
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
-      body: JSON.stringify({ email, password }),
+      body: JSON.stringify({ email: email, password: password }),
     });
 
     const data = await response.json();
+
+    console.log(data);
 
     if (response.ok) {
       alert("login sucessfull");

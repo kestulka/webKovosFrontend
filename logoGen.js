@@ -2,9 +2,6 @@ async function generateLogo() {
   const theme = document.getElementById("themeInput").value;
   const brand = document.getElementById("brandInput").value;
 
-  console.log(brand);
-  console.log(theme);
-
   const token = "10574af0b2fe4401bbeab87cee142707";
 
   try {
@@ -39,6 +36,11 @@ const generateButton = document.getElementById("generateBtn");
 generateButton.addEventListener("click", (event) => {
   event.preventDefault();
   generateLogo();
+});
+
+const favoritesButton = document.getElementById("favoritesBtn");
+favoritesButton.addEventListener("click", (event) => {
+  event.preventDefault();
 });
 
 async function getLogoHistory() {
