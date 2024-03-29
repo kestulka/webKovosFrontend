@@ -4,6 +4,7 @@ async function generateLogo() {
 
   const token = "10574af0b2fe4401bbeab87cee142707";
 
+  // Active API problems atm, instructions not clear
   try {
     const response = await fetch("http://172.16.50.58:5000/api/v1/new", {
       method: "POST",
@@ -36,11 +37,6 @@ const generateButton = document.getElementById("generateBtn");
 generateButton.addEventListener("click", (event) => {
   event.preventDefault();
   generateLogo();
-});
-
-const favoritesButton = document.getElementById("favoritesBtn");
-favoritesButton.addEventListener("click", (event) => {
-  event.preventDefault();
 });
 
 async function getLogoHistory() {

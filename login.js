@@ -1,5 +1,3 @@
-// login
-
 const token = "10574af0b2fe4401bbeab87cee142707";
 const loginForm = document.getElementById("loginForm");
 

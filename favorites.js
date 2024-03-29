@@ -1,3 +1,5 @@
+//!todo LS for start, later get from api
+
 function addToFavorites(imageUrl) {
   let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
 
