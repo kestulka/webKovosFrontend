@@ -13,6 +13,9 @@ app.use(express.static(".")); // servinimui (setupinti gale)
 app.get("/login", async (req, res) => {
   res.sendFile(path.join(__dirname, "/login.html"));
 });
+app.get("/favorites", async (req, res) => {
+  res.sendFile(path.join(__dirname, "/favorites.html"));
+});
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
